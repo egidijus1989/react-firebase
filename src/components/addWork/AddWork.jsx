@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import * as service from "../../services/services";
+import * as service from "../../services/TimeCrudServices";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 

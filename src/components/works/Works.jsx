@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import WorksTable from "../worksTable/WorksTable";
 import { useState, useEffect } from "react";
-import * as service from "../../services/services";
+import * as service from "../../services/TimeCrudServices";
 import Work from "../work/Work";
 
 const Works = () => {
