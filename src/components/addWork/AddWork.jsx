@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import * as service from "../../services/TimeCrudServices";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import {useAuthState} from 'react-firebase-hooks/auth'
+import {auth} from "../../services/AuthServices"
 
 const AddWork = () => {
+  const[user, loading, error] = useAuthState(auth)
   const navigate = useNavigate();
   const { id } = useParams();
   const [items, setItems] = useState({
@@ -13,6 +16,7 @@ const AddWork = () => {
     description: "",
     timeFrom: "",
     timeTo: "",
+    uid: ""
   });
 
   useEffect(() => {
@@ -31,11 +35,14 @@ const AddWork = () => {
     if (id) {
       service.updateWork(id, items);
     } else {
-      service.addWork(items);
+      service.addWork({
+        ...items,
+      uid:user.uid
+    });
     }
     navigate("/");
   };
-  console.log(items);
+  console.log(user);
   return (
     <div className="card">
       <div className="card-header">

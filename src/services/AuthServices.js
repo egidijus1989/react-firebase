@@ -32,6 +32,21 @@ const signInWithEmailAndPassword = async (email, password) => {
     }
 }
 
+const sendPaswordReset = async (email) =>{
+    try{
+        await auth.sendPasswordResetEmail(email);
+    }catch(err){
+        console.log(err)
+    }
+}
+
 export default firebase;
 
-export {auth, db, registerWithEmailAndPassword, logout, signInWithEmailAndPassword}
+export {
+    auth,
+     db,
+      registerWithEmailAndPassword,
+       logout,
+        signInWithEmailAndPassword,
+         sendPaswordReset,
+        }

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {useAuthState} from "react-firebase-hooks/auth"
 import {auth, signInWithEmailAndPassword} from "../../services/AuthServices"
+import validate from "../../utilities/validate"
 
 
 const Login = () => {
@@ -23,6 +24,7 @@ const Login = () => {
     const submitHandle = (e) =>{
         e.preventDefault();
         signInWithEmailAndPassword(credentials.email, credentials.password)
+        navigate("/");
     }
 
     useEffect(()=>{
@@ -44,6 +46,7 @@ const Login = () => {
             </div>
             <div className="mb-3">
                 <p>Neturite paskyros? <Link to={"/register"}>Registruokites</Link></p>
+                <p>Nepavyksta prisijungti ? <Link to="/password-reset">Atstatyti slaptazodi</Link> </p>
             </div>
         </form>
     </>
