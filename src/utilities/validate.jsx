@@ -1,16 +1,21 @@
-import {useState} from 'react';
+import { useState } from "react";
 
-export default function validate(){
-    const [message, setMessage] = useState('');
-    const handleChange = event => {
-        setMessage(event.target.value);
-    
-        if (event.target.value.trim().length > 0) {
-          console.log('✅ Input is not empty');
-        } else {
-          console.log('⛔️ Input is empty');
-        }
-      };
+const formValidator = () => {
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
 
-    return 
-}
+  const handleChangeValidator = (e) => {
+    let name = e.target.name;
+    let val = e.target.value;
+
+    validate(e, name, val);
+
+    setValues({
+      ...values,
+      [name]: val,
+    });
+  };
+  console.log("validacija: ", values);
+  return values, errors, handleChangeValidator;
+};
+export default formValidator;
